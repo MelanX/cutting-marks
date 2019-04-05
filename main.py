@@ -23,12 +23,12 @@ def start():
     global running, start
     print("start")
     start = t.start().strftime('%Y-%m-%d %H-%M-%S.txt')
-    print(start + " wurde eben erstellt.")
     running = True
 
 
 def stop():
     global running, markers, start
+    print(start + " was created.")
     print("stop")
     t.stop()
     running = False
