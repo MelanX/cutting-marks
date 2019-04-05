@@ -1,10 +1,6 @@
 from datetime import timedelta
-
 from pynput import keyboard
-
 from timer import Timer
-
-global running, i, markers
 
 START_STOP = [
     {keyboard.Key.f9}
@@ -16,25 +12,27 @@ ELAPSED = [
 
 current = set()
 t = Timer()
+
+global running, i, markers
 running = False
 i = 0
 markers = []
 
 
 def start():
-    global running, startlol
+    global running, start
     print("start")
-    startlol = t.start().strftime('%Y-%m-%d %H-%M-%S.txt')
-    print(startlol + " wurde eben erstellt.")
+    start = t.start().strftime('%Y-%m-%d %H-%M-%S.txt')
+    print(start + " wurde eben erstellt.")
     running = True
 
 
 def stop():
-    global running, markers, startlol
+    global running, markers, start
     print("stop")
     t.stop()
     running = False
-    with open(f"D:/Eigene Dateien/Eigene Videos/OBS/{startlol}", "w") as f:
+    with open(f"D:/Eigene Dateien/Eigene Videos/OBS/{start}", "w") as f:
         for i in markers:
             f.write(i)
     t.reset()
