@@ -2,6 +2,9 @@
 #MaxHotkeysPerInterval 9000
 
 ^q::
+	if !WinActive("ahk_exe vegas140.exe") {
+			return
+		}
 	BlockInput, MouseMove
 	MouseGetPos, oldMousePosX, oldMousePosY
 	
