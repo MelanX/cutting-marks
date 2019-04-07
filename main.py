@@ -20,19 +20,19 @@ markers = []
 
 
 def start():
-    global running, start
+    global running, file
     print("start")
-    start = t.start().strftime('%Y-%m-%d %H-%M-%S.txt')
+    file = t.start().strftime('%Y-%m-%d %H-%M-%S.txt')
     running = True
 
 
 def stop():
-    global running, markers, start
-    print(start + " was created.")
+    global running, markers, file
+    print(file + " was created.")
     print("stop")
     t.stop()
     running = False
-    with open(f"D:/Eigene Dateien/Eigene Videos/OBS/{start}", "w") as f:
+    with open(f"D:/Eigene Dateien/Eigene Videos/OBS/{file}", "w") as f:
         for i in markers:
             f.write(i)
     t.reset()
@@ -68,8 +68,6 @@ def on_press(key):
         current.add(key)
         if running:
             elepsed()
-        else:
-            pass
 
 
 with keyboard.Listener(on_press=on_press) as listener:
